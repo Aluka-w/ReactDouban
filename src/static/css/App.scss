@@ -1,0 +1,20 @@
+.logo {
+  width: 120px;
+  height: 45px;
+  background: url('../images/BILIBILI_LOGO.png');
+  background-size: 100% 100%;
+  margin: 10px 60px 16px 0;
+  float: left;
+  .logoLink {
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+  }
+}
+.searchBar {
+  float: right;
+  margin-right: 0px;
+  input {
+    // background-color: rgba(103, 170, 217, 0.4);
+  }
+}

@@ -1,0 +1,31 @@
+#SingleMovie {
+  width: 140px;
+  height: 220px;
+  border: 1px solid #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  img {
+    width: 115px;
+    height: 160px;
+  }
+  span {
+    font-size: 14px;
+    line-height: 30px;
+    color: #000;
+  }
+  .movieStar {
+    ul {
+      margin-right: 5px;
+      li {
+        margin-right: 2px;
+      }
+    }
+    span {
+      line-height: 0;
+      font-size: 12px;
+      color: rgb(244, 174, 75);
+    }
+  }
+}
