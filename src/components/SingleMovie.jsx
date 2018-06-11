@@ -1,17 +1,18 @@
+// 电影封面组件
 import React from 'react'
 import { Rate } from 'antd'
 import '../static/css/SingleMovie.scss'
 class SingleMovie extends React.Component {
-  filterTitle (word) {
-    console.log(word)
-    // if(word.length > 5) {
-    //   word = word.substring(0,4) + '...'
-    // }
-    // return word
-  }
+  // filterTitle (word) {
+  //   console.log(word)
+  //   // if(word.length > 5) {
+  //   //   word = word.substring(0,4) + '...'
+  //   // }
+  //   // return word
+  // }
   render () {
     return (
-      <div id="SingleMovie">
+      <div className="SingleMovieItem">
         <img src="https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2516825103.webp" alt="图片实例"/>
         {/* <span>{this.filterTitle.bind(this, '哆啦A梦:大雄萨达')}</span> */}
         <span>哆啦A梦:大雄萨达</span>

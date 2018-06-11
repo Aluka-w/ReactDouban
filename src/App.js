@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { hot } from 'react-hot-loader'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-import {Layout, Menu, Affix, Input} from 'antd'
+import {Layout, Menu, Affix, Input, BackTop} from 'antd'
 import Home from './pages/Home.jsx'
 import About from './pages/About.jsx'
 import Movie from './pages/Movie.jsx'
@@ -42,11 +42,12 @@ class App extends Component {
           </Affix>
         </Header>
         <Content style={{ padding: '0 30px' }}>
-          <div style={{ background: '#fff', padding: 24, minHeight: 785 }}>
+          <div style={{ background: '#fff', padding: 24, minHeight: 1785 }}>
             <Route path="/" exact component={Home}></Route>
             <Route path="/movie" component={Movie}></Route>
             <Route path="/about" component={About}></Route>
           </div>
+          <BackTop />
         </Content>
         <Footer style={{ textAlign: 'center', padding: 15}}>
           豆瓣Demo ©2018 Created by bin.wang

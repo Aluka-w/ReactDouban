@@ -1,0 +1,15 @@
+@mixin movieTitle {
+  margin: 30px 25px 20px 25px;
+  padding-bottom: 20px;
+  position: relative;
+  border-bottom: 1px solid #e8e8e8;
+  h2 {
+    display: inline;
+    font-size: 18px;
+    margin-right: 30px;
+  }
+  span {
+    color: rgb(117, 152, 205);
+    cursor: pointer;
+  }
+}

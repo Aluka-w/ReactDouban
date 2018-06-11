@@ -1,14 +1,21 @@
-#SingleMovie {
-  width: 140px;
-  height: 220px;
-  border: 1px solid #000;
+.SingleMovieItem {
+  width: 190px;
+  height: 280px;
+  // border: 1px solid #000;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  &:hover {
+    transition: all 0.2;
+    transform: scale(1.02);
+    -webkit-box-shadow:0px 3px 3px #c8c8c8 ;
+    -moz-box-shadow:0px 3px 3px #c8c8c8 ;
+    box-shadow:0px 3px 3px #c8c8c8 ;
+  }
   img {
-    width: 115px;
-    height: 160px;
+    width: 170px;
+    height: 220px;
   }
   span {
     font-size: 14px;

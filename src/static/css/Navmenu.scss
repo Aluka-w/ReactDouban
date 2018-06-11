@@ -1,0 +1,55 @@
+@import './Mixin.scss';
+.hotMovie {
+  position: relative;
+  .hotWord {
+    @include movieTitle;
+    .hotNum {
+      position: absolute;
+      right: 75px;
+      top: 0;
+    }
+  }
+  .ant-carousel {
+    // background-color: #ccc;
+    width: 1132px;
+    .navMenu {
+      .navItem {
+        // border: 1px solid #000;
+        display: flex;
+        justify-content: space-around;
+        flex: 1;
+        flex-wrap: wrap;
+        box-sizing: border-box;
+        width: 1132px;
+        .buyTicket {
+          margin: 20px 0 30px 50px;
+          background-color: rgb(69, 140,200);
+          border-radius: 2px;
+          line-height: 16px;
+          height: 26px;
+          width: 100px;
+          &:hover {
+            transform: scale(1.02);
+            font-size: 14px;
+          }
+          span {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+    .slick-dots {
+      position: absolute;
+      top: -57px;
+      right: -510px;
+      li {
+        background-color: rgb(117, 152, 205);
+        &.slick-active {
+          button {
+            background-color: red;
+          }
+        }
+      }
+    }
+  }
+}
