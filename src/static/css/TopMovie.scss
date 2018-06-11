@@ -9,6 +9,10 @@
     justify-content: space-around;
     width: 1132px;
     flex-wrap: wrap;
-    height: 700px;
+    // height: 900px;
+    // overflow: scroll;
+    .imgItem {
+      margin-bottom: 20px;
+    }
   }
 }

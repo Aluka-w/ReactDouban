@@ -55,4 +55,17 @@
 # 豆瓣API
  1. 参考: https://developers.douban.com/wiki/?title=api_v2
 
- 
+# 发送请求
+## Axios (比较熟悉)
+## fetch
+
+1. 替代原来的XHR, 或者Ajax, 基于ES6封装的Promise对象
+
+2. 没法解决跨域的问题
+
+3. 解决跨域: 
+		(1) fetch-jsonp
+		(2) 参考: https://blog.csdn.net/liu942626/article/details/79317837
+
+# 图片懒加载
+1. 参考: https://blog.csdn.net/xiaoxiao23333/article/details/62459549/

@@ -33,7 +33,7 @@
     padding-left: 20px;
     flex-basis: 200px;
     .card {
-      width: 180px;
+      width: 200px;
       box-sizing: border-box;
       margin-top: 200px;
       position: relative;
@@ -41,6 +41,11 @@
       p {
         margin-left: 10px;
         color: rgb(117, 152, 205);
+        font-size: 12px;
+        cursor: pointer;
+        span {
+          color: #456;
+        }
       }
     }
   }
