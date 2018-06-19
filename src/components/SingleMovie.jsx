@@ -10,13 +10,17 @@ class SingleMovie extends React.Component {
       movieItem: this.props.movieItem
     }
   }
+  goToMovie (id) {
+    console.log('电影id', id)
+    // this.props.history.push(`/movie/${id}`)
+  }
   render () {
     const movieItem = this.props.movieItem
     // console.log('单',movieItem)
     if(movieItem) {
       return (
-        <div className="SingleMovieItem">
-          <LazyLoad>
+        <div className="SingleMovieItem" onClick={()=>this.goToMovie(movieItem.id)}>
+          <LazyLoad height={174}>
             <img src={movieItem.images.small} alt={movieItem.alt}/>
           </LazyLoad>
           {/* <span>{this.filterTitle.bind(this, '哆啦A梦:大雄萨达')}</span> */}

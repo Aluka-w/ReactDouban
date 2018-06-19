@@ -1,3 +1,15 @@
+# React包
+1. `import ReactDOM from 'react-dom'`  index.js的渲染根组件: ReactDom.render
+
+2. `import React, { Component } from 'react'` 类的继承自react: class test extends Component
+
+3. `import { hot } from 'react-hot-loader'` 热更新
+
+4. `import { BrowserRouter as Router, Route, Link } from 'react-router-dom'` 路由
+
+5. Redux 和 react-redux
+
+
 #Yarn包管理工具
 1. 类比npm, 速度快, facebook推出
 
@@ -69,3 +81,35 @@
 
 # 图片懒加载
 1. 参考: https://blog.csdn.net/xiaoxiao23333/article/details/62459549/
+
+# 引入Echarts.js
+
+# 事件订阅的方式去获取数据
+pubsub-js
+
+# redux 和react-redux
+1. redux下的一个库: react-redux
+
+2. redux
+	(0) https://segmentfault.com/a/1190000012976767
+
+	(1) react , redux , react-redux的关系图解参考: https://segmentfault.com/a/1190000011473973
+
+	(2) 例子参考: https://segmentfault.com/a/1190000011474522
+
+	(3) 参考: https://www.cnblogs.com/bax-life/p/8440326.html
+
+3. 核心概念
+	(重要)流程: store -> dispatch(派发) -> action -> reducer
+						初始数据 -> store.dispatch(action) -> switch case 派发任务
+
+	(核心)Redux的核心由三部分组成：Store, Action, Reducer。
+			(1) Store : 是个对象，贯穿你整个应用的数据都应该存储在这里。
+
+			(2) Action： 是个对象，必须包含type这个属性，reducer将根据这个属性值来对store进行相应的处理。除此之外的属性，就是进行这个操作需要的数据。
+
+			(3) Reducer: 是个函数。接受两个参数：要修改的数据(state) 和 action对象。根据action.type来决定采用的操作，对state进行修改，最后返回新的state。
+
+4. 理解:
+  (1) react的context属性: 当放入某个状态, 它的所有子孙组件们可以直接访问
+

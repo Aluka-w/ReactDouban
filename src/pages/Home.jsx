@@ -16,7 +16,7 @@ class Home extends React.Component {
     }
   }
   componentWillMount () {
-    this.getNorthData()
+    // this.getNorthData()
   }
   getNorthData () {
     const url = `https://api.douban.com/v2/movie/us_box`

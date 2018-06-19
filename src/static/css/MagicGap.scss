@@ -1,5 +1,12 @@
-.MagicGap {
+#MagicGap {
   width: 1132px;
-  height: 100px;
+  height: 200px;
   border: 1px solid #000;
+  display: flex;
+  #leftGap {
+    flex: 1;
+  }
+  #rightGap {
+    flex: 1;
+  }
 }

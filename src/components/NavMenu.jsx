@@ -2,6 +2,7 @@
 import React from 'react'
 import SingleMovie from './SingleMovie'
 import fetchJsonp from 'fetch-jsonp';
+import {PubSub} from 'pubsub-js'
 import { Button, Carousel } from 'antd'
 import '../static/css/Navmenu.scss'
 class NavMenu extends React.Component {
@@ -16,7 +17,7 @@ class NavMenu extends React.Component {
     this.onChange = this.onChange.bind(this)
   }
   componentWillMount () {
-    this.getMovieData()
+    // this.getMovieData()
   }
   getMovieData () {
     // 获取正在上映的影片
@@ -27,9 +28,9 @@ class NavMenu extends React.Component {
       this.setState({
         movieList: res.subjects
       })
-      console.log('渲染的数据', res.subjects, 'this', this)
+      // console.log('渲染的数据', res.subjects, 'this', this)
     }).catch(err => {
-        console.log(err)
+        console.log('---', err)
     })
   }
   onChange (val) {
@@ -40,13 +41,34 @@ class NavMenu extends React.Component {
   renderLastItem () {
     let 
     movieList = this.state.movieList,
-    lastItem = []
+    lastItem = [],
+    PubSubList = [],
+    title = [],
+    wish_count = [],
+    collect_count = [],
+    dataList = []
     movieList = movieList.slice(0, 15) // 15
     for (let i = 0; i < 3; i++) {
       let tempList = []
       tempList = movieList.splice(0, 5)
       // console.log('单行数据', tempList)
       let listItem = tempList.map((item) => {
+        let url = `https://api.douban.com/v2/movie/subject/${item.id}`
+        fetchJsonp(url).then(response => { return response.json()}).then(res => {
+          title.push(res.title)
+          wish_count.push(res.wish_count)
+          collect_count.push(res.collect_count)
+          dataList.push({
+            "value": res.wish_count,
+            "name": res.title
+          })
+        })
+        PubSubList.push({
+          title: title,
+          wish_count: wish_count,
+          collect_count: collect_count,
+          dataList: dataList
+        })
         return (
           <div key={item.id}>
             <SingleMovie
@@ -64,6 +86,7 @@ class NavMenu extends React.Component {
         </div>
       ))
     }
+    PubSub.publish('PUBSUBLIST', PubSubList)
     return lastItem
   }
   render () {
