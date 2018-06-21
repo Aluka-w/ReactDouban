@@ -13,7 +13,7 @@ class TopMovie extends React.Component {
     this.topMovieRender = this.topMovieRender.bind(this)
   }
   componentWillMount () {
-    // this.getTopMovieData()
+    this.getTopMovieData()
   }
   getTopMovieData () {
     const url = `https://api.douban.com/v2/movie/top250`

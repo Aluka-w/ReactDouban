@@ -7,46 +7,44 @@ import  'echarts/lib/chart/bar';
 // 引入提示框和标题组件
 import 'echarts/lib/component/tooltip';
 import 'echarts/lib/component/title';
-import { PubSub } from "pubsub-js";
 import '../static/css/MagicGap.scss'
 class MagicGap extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      title: [],            // 标题
-      wish_count: [],       // 想看的人
-      collect_count: [],    // 看过的人
-      dataList: []          // 圆饼图的数据格式
+      // title: [],            // 电影标题
+      // wish_count: [],       // 想看的人
+      // collect_count: [],    // 看过的人
+      // dataList: []          // 圆饼图的数据格式
+      PubSubList: {}
     }
-    this.getPubSubList = this.getPubSubList.bind(this)
     this.createEcharts = this.createEcharts.bind(this)
   }
-  componentDidMount() {
-    PubSub.subscribe('PUBSUBLIST', this.getPubSubList)
-  }
-  getPubSubList (msg, data) {
-    console.log('事件订阅', data)
-    // this.createEcharts(data)
-    // console.log('得到的数就', this.state)
+  // 更新了props之后立即更新的周期函数
+  componentWillReceiveProps (nextProps) {
+    console.log('MagicGap', nextProps)
+    this.createEcharts(nextProps.PubSubList)
   }
   createEcharts (data) {
-    console.log('dataList', data)
+    // let data = this.props
+    console.log('echart', data)
     // 基于准备好的dom，初始化echarts实例
     let pieChart = echarts.init(document.getElementById('leftGap')),
     // 设置参数
     pieOptions = {
       title : {
         text: '热映电影',
-        subtext: '数据来源豆瓣',
-        x:'center'
+        subtext: '想看的人数',
+        left: 0,
+        top: 0
       },
       tooltip : {
         trigger: 'item',
         formatter: "{a} <br/>{b} : {c} ({d}%)"
       },
       legend: {
-        x : 'center',
-        y : 'bottom',
+        x : 'right',
+        y : 'top',
         data: data.title
       },
       toolbox: {
@@ -67,8 +65,8 @@ class MagicGap extends React.Component {
         {
           name:'想看的人数',
           type:'pie',
-          radius : [20, 70],
-          center : ['15%', '50%'],
+          radius : [15, 75],
+          center : ['50%', '50%'],
           roseType : 'area',
           data: data.dataList
         }
@@ -82,12 +80,9 @@ class MagicGap extends React.Component {
       color: ['#3398DB'],
       title : {
         text: '热映电影',
-        subtext: '数据来源豆瓣',
-        x:'center'
-      },
-      legend: {
-        data: data.title,
-        origin: 'vertical'
+        subtext: '已看的人数',
+        left: 0,
+        top: 0
       },
       tooltip : {
         trigger: 'axis',
@@ -103,7 +98,21 @@ class MagicGap extends React.Component {
       },
       xAxis: {
         type: 'category',
-        data: data.title
+        data: data.title,
+        // name: '已经看过的人数',
+        boundaryGap: true,
+        axisLabel :{
+          interval:0,
+          rotate:-5,
+          formatter: function (value) {
+            if(value.length > 2) {
+              return (`${value.substring(0,2)}...`)
+            }else {
+              return value
+            }
+          },
+          margin: 8
+        }
       },
       yAxis: {
         type: 'value'

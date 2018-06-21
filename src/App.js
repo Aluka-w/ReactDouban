@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import { hot } from 'react-hot-loader'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-import {Layout, Menu, Affix, Input, BackTop, Button} from 'antd'
+import {Layout, Menu, Affix, Input, BackTop} from 'antd'
 import { Provider } from 'react-redux'
 import store from "./redux/store";
-import { addToCart, updateCart, deleteFromCart }  from './redux/actions/cart-actions';
 import Home from './pages/Home.jsx'
 import About from './pages/About.jsx'
 import Movie from './pages/Movie.jsx'
@@ -13,20 +12,6 @@ const { Header, Content, Footer } = Layout // 解构赋值
 const Search = Input.Search
 
 class App extends Component {
-  componentDidMount () {
-    console.log("派发前: ", store.getState());
-    let unsubscribe = store.subscribe(() =>
-      console.log('派发后', store.getState())
-    );
-
-    store.dispatch(addToCart('Coffee 500gm', 1, 250));
-    store.dispatch(addToCart('Flour 1kg', 2, 110));
-    store.dispatch(addToCart('Juice 2L', 1, 250));
-    store.dispatch(updateCart('Flour 1kg', 5, 110));
-    store.dispatch(deleteFromCart('Coffee 500gm'));
-
-    unsubscribe();
-  }
   render() {
     return (
       <Provider store={store}>
@@ -48,9 +33,6 @@ class App extends Component {
               </Menu.Item>
               <Menu.Item key="3">
                 <Link to="/about">关于</Link>
-              </Menu.Item>
-              <Menu.Item key="4">
-                <Button type="primary">4</Button>
               </Menu.Item>
             </Menu>
             <Affix style={{position: 'absolute', right: 40, top: 15}}>

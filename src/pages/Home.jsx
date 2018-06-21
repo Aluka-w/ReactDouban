@@ -1,7 +1,9 @@
 import React from 'react'
-import NavMenu from "../components/NavMenu";
 import TopMovie from "../components/TopMovie";
-import MagicGap from "../components/MagicGap";
+// import NavMenu from "../components/NavMenu";
+// import MagicGap from "../components/MagicGap";
+import { NavMenuRedux } from "../components/reactRedux";
+import { MagicGapRedux } from "../components/reactRedux";
 import fetchJsonp from 'fetch-jsonp'
 import { Anchor, Carousel , Card} from 'antd'
 import '../static/css/Home.scss'
@@ -16,7 +18,7 @@ class Home extends React.Component {
     }
   }
   componentWillMount () {
-    // this.getNorthData()
+    this.getNorthData()
   }
   getNorthData () {
     const url = `https://api.douban.com/v2/movie/us_box`
@@ -62,8 +64,8 @@ class Home extends React.Component {
               {swingItem}
             </Carousel>
           </a>
-          <NavMenu></NavMenu>
-          <MagicGap></MagicGap>
+          <NavMenuRedux></NavMenuRedux>
+          <MagicGapRedux></MagicGapRedux>
           <TopMovie></TopMovie>
         </div>
         <div className="rightItem" id="rightItem">
